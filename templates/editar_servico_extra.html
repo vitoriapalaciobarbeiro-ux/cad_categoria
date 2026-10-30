@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Serviço Extra</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/servico_extra.css') }}">
+</head>
+
+<body>
+
+    <div class="header">
+
+        <img class="logo_branca"
+             src="{{ url_for('static', filename='img/logo_branca.png') }}"
+             alt="Logo">
+
+        <div class="inicio_relatorio_previsao">
+            <a href="{{ url_for('dashboard') }}">Início</a>
+            <a href="#">Relatórios</a>
+            <a href="#">Previsões</a>
+        </div>
+
+        <div class="usuario">
+            <a class="icone_user">
+            <img src="{{ url_for('static', filename=img) }}" alt="Foto de usuário">
+            </a>
+
+            <a href="{{ url_for('editar_usuario') }}">
+                <p>Olá, {{ nome }}</p>
+            </a>
+
+            <a href="{{ url_for('logout') }}" class="logout">
+                <img src="{{ url_for('static', filename='img/logout.png') }}" alt="Sair">
+            </a>
+        </div>
+
+    </div>
+
+    <main>
+
+        <div class="esquerda">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Meu Salário">
+        </div>
+
+        <div class="direita">
+
+            <a href="{{ url_for('historico_servico_extra') }}" class="voltar">
+                ⟵ Voltar
+            </a>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <div class="formulario">
+
+                <div class="titulo">
+                    <span class="mais">+</span>
+                    <h2>Editar serviço extra</h2>
+                </div>
+
+                <p class="descricao-titulo">
+                    Altere as informações do serviço realizado.
+                </p>
+
+                <form action="{{ url_for('editar_servico_extra', id=id) }}" method="post">
+
+                    <div class="linha">
+
+                        <div class="campo">
+                            <label for="servico">Serviço realizado</label>
+
+                            <input
+                                type="text"
+                                name="servico"
+                                id="servico"
+                                value="{{ servico[0] }}"
+                                placeholder="Insira o serviço realizado"
+                                required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="valor">Valor</label>
+
+                            <input
+                                type="number"
+                                name="valor"
+                                id="valor"
+                                value="{{ servico[1] }}"
+                                placeholder="R$ 0,00"
+                                min="0.01"
+                                step="0.01"
+                                required>
+                        </div>
+
+                    </div>
+
+                    <div class="linha">
+
+                        <div class="campo">
+                            <label for="data">Data</label>
+
+                            <input
+                                type="date"
+                                name="data"
+                                id="data"
+                                value="{{ servico[2].strftime('%Y-%m-%d') }}"
+                                disabled>
+                        </div>
+
+                        <div class="campo botao">
+                            <button type="submit">Salvar alterações</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

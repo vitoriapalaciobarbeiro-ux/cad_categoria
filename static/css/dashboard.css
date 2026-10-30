@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+:root {
+    --principal: #0D7C4E;
+    --secundaria: #16A34A;
+    --fundo_principal: #22C55E;
+    --suave: #DDF7E7;
+    --fundo_claro:  #F7FAF8;
+    --branco: #FFFFFF;
+    --neutro: #1F2937;
+    --neutro_secundario: #6B7280;
+    --barra_grafico: #7DD4AF;
+    --cards_despesas: #ED4D5D;
+    --fundo_cards: #F2CDD2;
+    --cards_beneficios: #247FDD;
+    --fundo_beneficios: #D4E7F8;
+    --preto: #000000;
+    --fundo_cards1: #FFF2F4;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    margin: 0;
+    color: var(--neutro);
+    background: var(--branco);
+}
+
+
+img {
+    max-width: 100%;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+
+
+.header {
+    width: 100%;
+    height: 70px;
+    background-color: var(--principal);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.header .logo_branca {
+    width: 95px;
+    height: auto;
+    margin-left: 16px;
+}
+
+
+/* Foto pequena do cabeçalho */
+.pagina-editar-perfil .icone_user {
+    display: block;
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #e0eee5;
+}
+
+.pagina-editar-perfil .icone_user img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Foto grande do perfil */
+.pagina-editar-perfil .icone_user_grande {
+    width: 150px;
+    height: 150px;
+    margin: 10px auto 25px;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #0d7c4e;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 80, 45, 0.15);
+}
+
+.pagina-editar-perfil .icone_user_grande img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+.inicio_relatorio_previsao {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 120px;
+    color: var(--branco);
+    margin-left: auto;
+}
+
+
+.inicio_relatorio_previsao a,
+.inicio_relatorio_previsao p {
+    color: var(--branco);
+}
+
+
+.header .icone_e_nome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+.header .icone_e_nome .icone_user {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #e0eee5;
+}
+
+.header .icone_e_nome .icone_user img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+.header .icone_e_nome .nome_user {
+    color: var(--branco);
+    font-weight: 600;
+    font-size: 9px;
+}
+
+
+
+
+.logout img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    display: block;
+}
+
+
+.financeiro {
+    padding: 30px;
+}
+
+
+.financeiro h2 {
+    color: #008653;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+
+.financeiro p {
+    color: #84919a;
+    margin-top: 0;
+}
+
+
+.cards {
+    display: flex;
+    gap: 12px;
+    margin-top: 45px;
+}
+
+
+.card {
+    width: 33.33%;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 16px;
+    border: 1px solid #e2f1e9;
+    border-radius: 6px;
+    background-color: #DDF7E7;
+}
+
+
+.icone {
+    background-color: #078657;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+
+.card h4 {
+    color: #008653;
+    margin: 0 0 7px;
+    font-size: 12px;
+}
+
+
+.card h1 {
+    color: #008653;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 0 5px;
+}
+
+
+.card p {
+    color: #77858c;
+    font-size: 9px;
+}
+
+
+.despesas {
+    background-color: #fff2f4;
+    border-color: #ffd4dc;
+}
+
+
+.despesas h4,
+.despesas h1{
+    color: #f44860;
+}
+
+
+.despesas .icone{
+    background-color: #e9576a;
+}
+
+
+.novo {
+    background-color: var(--principal);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+
+.filtro {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 20px 30px 0 auto;
+    padding: 10px 14px;
+    border: 1px solid #C9EDDF;
+    border-radius: 6px;
+    background-color: var(--branco);
+}
+
+.filtro h3 {
+    color: var(--principal);
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.filtro p {
+    display: none;
+}
+
+.filtro form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.filtro .campo_filtro {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filtro label {
+    color: var(--neutro_secundario);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.filtro input {
+    width: 135px;
+    height: 32px;
+    padding: 0 6px;
+    border: 1px solid #C9EDDF;
+    border-radius: 4px;
+    background-color: var(--fundo_claro);
+    color: var(--neutro);
+    font-size: 12px;
+}
+
+.filtro button {
+    height: 32px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--principal);
+    color: var(--branco);
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.filtro button:hover {
+    background-color: #095E3B;
+}
+
+.botões-historico{
+margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+
+.inicio_relatorio_previsao {
+gap: 70px;
+}
+
+.financeiro {
+padding: 25px;
+}
+
+.cards {
+gap: 10px;
+}
+
+.card {
+padding: 14px;
+}
+
+.card h1 {
+font-size: 21px;
+}
+
+.filtro {
+margin-right: 25px;
+}
+
+.novo {
+margin-left: 20px;
+}
+}
+
+
+@media (max-width: 768px) {
+
+.header .logo_branca {
+width: 75px;
+}
+
+.inicio_relatorio_previsao {
+gap: 30px;
+}
+
+.inicio_relatorio_previsao a,
+.inicio_relatorio_previsao p {
+font-size: 12px;
+}
+
+.header .icone_e_nome .nome_user {
+display: none;
+}
+
+.logout img {
+width: 28px;
+height: 28px;
+}
+
+.financeiro {
+padding: 20px;
+}
+
+.financeiro h2 {
+font-size: 22px;
+}
+
+.financeiro p {
+font-size: 13px;
+}
+
+.filtro {
+margin: 20px 0 0 auto;
+}
+
+.filtro input {
+width: 120px;
+}
+
+.cards {
+gap: 8px;
+margin-top: 35px;
+}
+
+.card {
+padding: 12px;
+gap: 10px;
+}
+
+.icone {
+width: 35px;
+height: 35px;
+font-size: 20px;
+}
+
+.card h1 {
+font-size: 18px;
+}
+
+.novo {
+margin-left: 15px;
+font-size: 12px;
+padding: 9px 12px;
+}
+
+.botões-registrar,
+.botões-historico {
+padding-right: 15px;
+margin-top: 50px;
+}
+}
+
+
+
+
+@media (max-width: 425px) {
+
+.header {
+height: 65px;
+padding: 0 8px;
+}
+
+.header .logo_branca {
+width: 60px;
+margin-left: 0;
+}
+
+.inicio_relatorio_previsao {
+gap: 10px;
+margin-left: 12px;
+}
+
+.inicio_relatorio_previsao a,
+.inicio_relatorio_previsao p {
+font-size: 9px;
+}
+
+.header .icone_e_nome {
+margin-right: 0;
+gap: 5px;
+}
+
+.header .icone_e_nome .icone_user {
+width: 19px;
+height: 19px;
+}
+
+.logout img {
+width: 21px;
+height: 21px;
+}
+
+.financeiro {
+padding: 15px;
+}
+
+.financeiro h2 {
+font-size: 19px;
+}
+
+.financeiro p {
+font-size: 11px;
+}
+
+.filtro {
+width: 100%;
+margin: 20px 0;
+padding: 10px;
+}
+
+.filtro form {
+width: 100%;
+display: block;
+}
+
+.filtro .campo_filtro {
+display: block;
+margin-bottom: 10px;
+}
+
+.filtro label {
+display: block;
+margin-bottom: 5px;
+}
+
+.filtro input {
+width: 100%;
+}
+
+.filtro button {
+width: 100%;
+}
+
+.cards {
+display: block;
+margin-top: 25px;
+}
+
+.card {
+width: 100%;
+margin-bottom: 12px;
+}
+
+.card h1 {
+font-size: 20px;
+}
+
+.botões-registrar,
+.botões-historico {
+padding: 0 15px;
+margin-bottom: 15px;
+}
+
+.novo {
+display: block;
+width: 100%;
+margin: 0 0 10px 0;
+padding: 11px;
+text-align: center;
+font-size: 12px;
+}
+}
+
+
+@media (max-width: 375px) {
+
+.header .logo_branca {
+width: 55px;
+}
+
+.inicio_relatorio_previsao {
+gap: 8px;
+margin-left: 8px;
+}
+
+.inicio_relatorio_previsao a,
+.inicio_relatorio_previsao p {
+font-size: 8px;
+}
+
+.header .icone_e_nome .icone_user {
+width: 18px;
+height: 18px;
+}
+
+.logout img {
+width: 20px;
+height: 20px;
+}
+
+.financeiro {
+padding: 12px;
+}
+
+.financeiro h2 {
+font-size: 18px;
+}
+
+.financeiro p {
+font-size: 10px;
+}
+
+.card h1 {
+font-size: 18px;
+}
+
+.card h4 {
+font-size: 11px;
+}
+
+.botões-registrar,
+.botões-historico {
+padding: 0 12px;
+}
+
+.novo {
+font-size: 11px;
+}
+}
+
+
+@media (max-width: 320px) {
+
+.header {
+padding: 0 5px;
+}
+
+.header .logo_branca {
+width: 50px;
+}
+
+.inicio_relatorio_previsao {
+gap: 5px;
+margin-left: 5px;
+}
+
+.inicio_relatorio_previsao a,
+.inicio_relatorio_previsao p {
+font-size: 7px;
+}
+
+.header .icone_e_nome {
+gap: 3px;
+}
+
+.header .icone_e_nome .icone_user {
+width: 16px;
+height: 16px;
+}
+
+.logout img {
+width: 18px;
+height: 18px;
+}
+
+.financeiro {
+padding: 10px;
+}
+
+.financeiro h2 {
+font-size: 17px;
+}
+
+.filtro {
+padding: 8px;
+}
+
+.filtro label {
+font-size: 10px;
+}
+
+.filtro input {
+height: 30px;
+font-size: 10px;
+}
+
+.filtro button {
+height: 30px;
+font-size: 10px;
+}
+
+.card {
+padding: 10px;
+}
+
+.icone {
+width: 32px;
+height: 32px;
+font-size: 18px;
+}
+
+.card h1 {
+font-size: 17px;
+}
+
+.card p {
+font-size: 8px;
+}
+
+.botões-registrar,
+.botões-historico {
+padding: 0 10px;
+}
+
+.novo {
+font-size: 10px;
+padding: 10px 5px;
+}
+}
+/* Ajuste para celulares */
+@media (max-width: 600px) {
+    .pagina-editar-perfil .icone_user_grande {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+
+    .pagina-editar-perfil .icone_user {
+        width: 32px;
+        height: 32px;
+    }
+}

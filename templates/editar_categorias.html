@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar categoria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_categorias.css') }}">
+</head>
+<body>
+    <div class="header">
+        <img class="logo_branca" src="{{ url_for('static', filename='img/logo_branca.png') }}" alt="">
+
+        <div class="inicio_relatorio_previsao">
+            <a href="{{ url_for('dashboard') }}">Início</a>
+            <a href="#">Relatório</a>
+            <a href="#">Previsão</a>
+        </div>
+        <div class="icone_e_nome">
+            <a class="icone_user">
+            <img src="{{ url_for('static', filename=img) }}" alt="Foto de usuário">
+            </a>
+            <a href="{{ url_for('editar_usuario') }}">
+                <p class="nome_user">Olá, {{ nome }}</p>
+            </a>
+            <a href="{{ url_for('logout') }}" class="logout"><img
+                    src="{{ url_for('static', filename='img/logout.png') }}" alt="Símbolo de sair"></a>
+        </div>
+    </div>
+
+
+    <main>
+        <div class="esquerda">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Meu Salário">
+        </div>
+        <div class="direita">
+            <div class="conteudo-categorias formulario-categoria">
+                <a href="{{ url_for('listar_categorias') }}" class="voltar">Voltar às categorias</a>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+
+
+                <h2>Editar categoria</h2>
+                <p class="descricao-titulo">Altere o nome da categoria.</p>
+                <form action="{{ url_for('editar_categorias', id=id) }}" method="post">
+                    <label for="nome_categoria">Nome</label>
+                    <input id="nome_categoria" name="nome_categoria" type="text" value="{{ categoria[0] }}" required>
+                    <button type="submit">Salvar alterações</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+

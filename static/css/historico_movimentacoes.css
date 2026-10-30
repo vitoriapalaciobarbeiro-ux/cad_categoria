@@ -1,0 +1,689 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+:root {
+    --principal: #0D7C4E;
+    --secundaria: #16A34A;
+    --fundo_principal: #22C55E;
+    --suave: #DDF7E7;
+    --fundo_claro:  #F7FAF8;
+    --branco: #FFFFFF;
+    --neutro: #1F2937;
+    --neutro_secundario: #6B7280;
+    --barra_grafico: #7DD4AF;
+    --cards_despesas: #ED4D5D;
+    --fundo_cards: #F2CDD2;
+    --cards_beneficios: #247FDD;
+    --fundo_beneficios: #D4E7F8;
+    --preto: #000000;
+    --fundo_cards1: #FFF2F4;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    margin: 0;
+    color: var(--neutro);
+    background: var(--branco);
+}
+
+
+img {
+    max-width: 100%;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+.header {
+   width: 100%;
+   height: 70px;
+   background-color: var(--principal);
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+
+
+
+.header .logo_branca {
+   width: 95px;
+   height: auto;
+   margin-left: 16px;
+}
+
+
+
+
+.inicio_relatorio_previsao {
+   align-items: center;
+   display: flex;
+   flex-direction: row;
+   gap: 120px;
+   color: var(--branco);
+   margin-left: auto;
+}
+
+
+
+
+.inicio_relatorio_previsao a,
+.inicio_relatorio_previsao p {
+   color: var(--branco);
+}
+
+
+
+
+.header .icone_e_nome {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 8px;
+   margin-left: auto;
+   margin-right: 25px;
+}
+
+.header .icone_e_nome .nome_user {
+   color: var(--branco);
+   font-weight: 600;
+   font-size: 9px;
+}
+
+
+.header .icone_e_nome .nome_user {
+   color: var(--branco);
+   font-weight: 600;
+   font-size: 9px;
+}
+
+.logout img {
+   width: 34px;
+   height: 34px;
+   object-fit: contain;
+   display: block;
+}
+
+
+
+.pagina-editar-perfil .icone_user img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.pagina-editar-perfil .icone_user_grande img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+
+.barra_pesquisa {
+    width: 92%;
+    margin: 35px auto 0;
+    padding: 20px 24px;
+    border: 2px solid #C9EDDF;
+    border-radius: 8px;
+    background-color: var(--branco);
+    box-shadow: 0 8px 25px rgba(13, 124, 78, 0.10);
+}
+
+.barra_pesquisa h3 {
+    color: var(--principal);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.barra_pesquisa form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.barra_pesquisa .campo_filtro {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.barra_pesquisa label {
+    color: var(--neutro);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.barra_pesquisa input,
+.barra_pesquisa select {
+    width: 100%;
+    height: 38px;
+    padding: 0 10px;
+    border: 1px solid #C9EDDF;
+    border-radius: 5px;
+    background-color: var(--fundo_claro);
+    color: var(--neutro);
+    font-size: 12px;
+}
+
+.barra_pesquisa input:focus,
+.barra_pesquisa select:focus {
+    border-color: var(--principal);
+}
+
+.barra_pesquisa button {
+    width: 55px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.barra_pesquisa button img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.barra_pesquisa button:hover {
+    background-color: #095E3B;
+}
+
+
+
+body {
+    background-color: var(--fundo_claro);
+}
+
+.historico {    
+    width: 92%;
+    min-height: 360px;
+    margin: 45px;
+    margin-left: 4%;
+    background-color: white;
+    border: 2px solid #DDF7E7;
+    border-radius: 6px;
+}
+
+
+.historico h3 {
+    color: var(--principal);
+    font-size: 14px;
+    padding: 15px 20px 8px;
+    text-align: center;
+}
+
+
+
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    background-color: white(225, 50, 50);
+    border: 1px solid var(--borda);
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+
+
+th {
+    background-color: #DDF7E7;
+}
+
+
+
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    font-size: 12px;
+    border-bottom: 1px solid var(--borda);
+
+}
+
+
+.editar {
+    background-color: var(--principal);
+    color: white;
+    border: none;
+    padding: 6px 9px;
+    border-radius: 5px;
+    width: 69px;
+    height: 30px;
+}
+
+
+
+
+.excluir {
+    background-color: #FF4545;
+    color: white;
+    border: none;
+    padding: 6px 9px;
+    border-radius: 5px;
+    width: 69px;
+    height: 30px;
+}
+
+
+.novo {
+    background-color: var(--principal);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-left: 80%;
+    cursor: pointer;
+}
+
+.editar-excluir{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    gap: 5px;
+}
+
+.desativar{
+    background-color: #72726e;
+    color: white;
+    border: none;
+    padding: 6px 9px;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+}
+
+.ativar{
+    background-color: #3568c1;
+    color: white;
+    border: none;
+    padding: 6px 9px;
+    border-radius: 5px;
+    width: 69px;
+    height: 30px;
+}
+
+@media (max-width: 1024px) {
+
+
+    .inicio_relatorio_previsao {
+        gap: 70px;
+    }
+
+
+    .barra_pesquisa {
+        width: 70%;
+    }
+
+
+    .historico {
+        width: 94%;
+        margin-left: 3%;
+    }
+
+
+    .novo {
+        margin-left: 75%;
+    }
+}
+
+
+
+
+@media (max-width: 768px) {
+
+
+    .inicio_relatorio_previsao {
+        gap: 30px;
+    }
+
+
+    .header .logo_branca {
+        width: 80px;
+    }
+
+
+    .header .icone_e_nome .nome_user {
+        display: none;
+    }
+
+
+    .barra_pesquisa {
+        width: 85%;
+    }
+
+
+    .historico {
+        width: 96%;
+        margin-left: 2%;
+        overflow-x: auto;
+    }
+
+
+    table {
+        width: 100%;
+    }
+
+
+    th,
+    td {
+        font-size: 10px;
+        padding: 8px;
+    }
+
+
+    .novo {
+        margin-left: 70%;
+    }
+}
+
+
+
+
+@media (max-width: 425px) {
+
+
+    .header {
+        height: auto;
+        padding: 10px;
+    }
+
+
+    .header .logo_branca {
+        width: 65px;
+        margin-left: 0;
+    }
+
+
+    .inicio_relatorio_previsao {
+        gap: 12px;
+        margin-left: 15px;
+    }
+
+
+    .inicio_relatorio_previsao a {
+        font-size: 10px;
+    }
+
+
+    .header .icone_e_nome {
+        margin-right: 0;
+        gap: 5px;
+    }
+
+
+    .header .icone_e_nome .icone_user {
+        width: 18px;
+        height: 18px;
+    }
+
+
+    .logout img {
+        width: 22px;
+        height: 22px;
+    }
+
+
+    .barra_pesquisa {
+        width: 92%;
+        height: 38px;
+        margin-top: 20px;
+    }
+
+
+    .historico {
+        width: 95%;
+        height: auto;
+        margin: 55px auto 0;
+        overflow-x: auto;
+    }
+
+
+    table {
+        min-width: 600px;
+    }
+
+
+    th,
+    td {
+        font-size: 10px;
+        padding: 7px;
+    }
+
+
+    .editar,
+    .excluir {
+        display: inline-block;
+        width: 70px;
+        height: 30px;
+        padding: 6px 5px;
+        font-size: 10px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+
+    .novo {
+        display: block;
+        width: 170px;
+        margin: 45px auto 20px;
+        padding: 10px;
+        text-align: center;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+}
+
+
+
+
+@media (max-width: 375px) {
+
+
+    .inicio_relatorio_previsao {
+        gap: 8px;
+        margin-left: 10px;
+    }
+
+
+    .inicio_relatorio_previsao a {
+        font-size: 9px;
+    }
+
+
+    .barra_pesquisa {
+        width: 94%;
+    }
+
+
+    .historico {
+        width: 96%;
+        margin-left: 2%;
+    }
+
+
+    .novo {
+        width: 94%;
+    }
+}
+
+
+
+
+@media (max-width: 325px) {
+
+
+    .header .logo_branca {
+        width: 55px;
+    }
+
+
+    .inicio_relatorio_previsao {
+        gap: 5px;
+        margin-left: 5px;
+    }
+
+
+    .inicio_relatorio_previsao a {
+        font-size: 8px;
+    }
+
+
+    .header .icone_e_nome .icone_user {
+        width: 15px;
+        height: 15px;
+    }
+
+
+    .logout img {
+        width: 18px;
+        height: 18px;
+    }
+
+
+    .barra_pesquisa input {
+        font-size: 10px;
+    }
+
+
+    .historico h3 {
+        font-size: 12px;
+    }
+
+
+    th,
+    td {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-editar-perfil .icone_user_grande {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+
+    .pagina-editar-perfil .icone_user {
+        width: 32px;
+        height: 32px;
+    }
+}
+.header .icone_e_nome .icone_user {
+    display: block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #e0eee5;
+}
+
+.header .icone_e_nome .icone_user img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.pagina-editar-perfil .icone_user {
+    display: block;
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #e0eee5;
+}
+
+.pagina-editar-perfil .icone_user img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.pagina-editar-perfil .icone_user_grande {
+    width: 150px;
+    height: 150px;
+    margin: 10px auto 25px;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #0d7c4e;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 80, 45, 0.15);
+}
+
+.pagina-editar-perfil .icone_user_grande img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 425px) {
+    .header .icone_e_nome .icone_user {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 325px) {
+    .header .icone_e_nome .icone_user {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-editar-perfil .icone_user_grande {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+
+    .pagina-editar-perfil .icone_user {
+        width: 32px;
+        height: 32px;
+    }
+}

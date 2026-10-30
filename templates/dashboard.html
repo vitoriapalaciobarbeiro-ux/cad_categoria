@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+</head>
+
+<body class="pagina-dashboard">
+    <div class="header">
+        <img class="logo_branca" src="../static/img/logo_branca.png" alt="Logo">
+
+        <div class="inicio_relatorio_previsao">
+            <a href="{{ url_for('dashboard') }}">Início</a>
+            <p>Relatório</p>
+            <p>Previsão</p>
+        </div>
+
+
+        <div class="icone_e_nome">
+            <a class="icone_user">
+            <img src="{{ url_for('static', filename=img) }}" alt="Foto de usuário">
+            </a>
+            <a href="{{ url_for('editar_usuario') }}">
+                <p class="nome_user">Olá, {{ nome }}</p>
+            </a>
+
+
+            <a href="{{ url_for('logout') }}" class="logout">
+                <img src="../static/img/logout.png" alt="Símbolo de sair">
+            </a>
+        </div>
+    </div>
+
+    <div class="financeiro">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="topo_dashboard">
+            <div class="boas_vindas">
+                <h2>Bem-vindo(a) {{ nome }}!</h2>
+                <p>Aqui está um resumo das suas finanças.</p>
+            </div>
+            
+            <div class="filtro">
+                <form action="{{ url_for('dashboard') }}" method="POST">
+                    <div class="campo_filtro">
+                        <label for="data_inicial">Data inicial</label>
+                        <input type="date" name="data_inicial" id="data_inicial">
+                    </div>
+
+                    <div class="campo_filtro">
+                        <label for="data_final">Data final</label>
+                        <input type="date" name="data_final" id="data_final">
+                    </div>
+
+                    <button type="submit">Filtrar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="icone">＋</div>
+                <div>
+                    <h4>Receitas</h4>
+                    <h1>R$ {{ "%.2f"|format(receitas)|replace('.', ',') }}</h1>
+                    <p>Total de receitas ativas</p>
+                </div>
+            </div>
+
+            <div class="card despesas">
+                <div class="icone">+</div>
+                <div>
+                    <h4>Despesas</h4>
+                    <h1>R$ {{ "%.2f"|format(despesas)|replace('.', ',') }}</h1>
+                    <p>Total de despesas ativas</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="icone">+</div>
+
+                <div>
+                    <h4>Saldo</h4>
+                    <h1>R$ {{ "%.2f"|format(saldo)|replace('.', ',') }}</h1>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="botões-registrar">
+        <a class="novo" href="{{ url_for('trabalho_diario') }}">Registrar trabalho diário</a>
+        <a href="{{ url_for('servico_extra') }}" class="novo">Cadastrar serviço extra</a>
+        <a href="{{ url_for('movimentacoes') }}" class="novo">Registrar receitas e despesas</a>
+    </div>
+
+
+    <div class="botões-historico">
+        <a class="novo" href="{{ url_for('historico_trabalho') }}">Histórico de trabalho diário</a>
+        <a href="{{ url_for('historico_servico_extra') }}" class="novo">Histórico de serviço extra</a>
+        <a href="{{ url_for('historico_movimentacoes') }}" class="novo">Histórico de movimentações</a>
+    </div>
+
+    <div>
+
+
+    </div>
+
+
+</body>
+
+</html>

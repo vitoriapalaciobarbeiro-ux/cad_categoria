@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar categorias</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/listar_categorias.css') }}">
+</head>
+<body>
+    <div class="header">
+        <img class="logo_branca" src="{{ url_for('static', filename='img/logo_branca.png') }}" alt="">
+
+        <div class="inicio_relatorio_previsao">
+            <a href="{{ url_for('dashboard') }}">Início</a>
+            <a href="#">Relatório</a>
+            <a href="#">Previsão</a>
+        </div>
+        <div class="icone_e_nome">
+            <a class="icone_user">
+            <img src="{{ url_for('static', filename=img) }}" alt="Foto de usuário">
+            </a>
+            <a href="{{ url_for('editar_usuario') }}">
+                <p class="nome_user">Olá, {{ nome }}</p>
+            </a>
+            <a href="{{ url_for('logout') }}" class="logout"><img
+                    src="{{ url_for('static', filename='img/logout.png') }}" alt="Símbolo de sair"></a>
+        </div>
+    </div>
+
+    <main>
+        <div class="esquerda">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Meu Salário">
+        </div>
+        <div class="direita">
+            <div class="conteudo-categorias">
+                <a href="{{ url_for('categorias') }}" class="voltar">Voltar ao cadastro</a>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+
+                <h2>Editar categorias</h2>
+
+                <div class="barra_pesquisa">
+                    <h3>Filtrar</h3>
+
+                    <form action="{{ url_for('listar_categorias') }}" method="POST">
+
+                        <div class="campo_filtro descricao_filtro">
+                            <label for="descricao">Nome</label>
+                            <input type="text" name="nome_categoria" placeholder="Pesquisar por descrição" id="descricao">
+                        </div>
+
+                        <button type="submit">
+                            <img src="{{ url_for('static', filename='img/lupa.png') }}" alt="Buscar">
+                        </button>
+
+                    </form>
+                </div>
+
+                {% if categorias %}
+                    <div class="lista-categorias">
+                        {% for categoria in categorias %}
+                        <div class="categoria-item">
+                            <span>{{ categoria[1] }}</span>
+                            {% if categoria[0] not in [1001, 1002] %}
+                            <div class="acoes-categoria">
+                                <a class="botao-editar" href="{{ url_for('editar_categorias', id=categoria[0]) }}">Editar</a>
+                                {% if categoria[2] == 0 %}
+                                <form action="{{ url_for('alterar_status_categoria' , id=categoria[0]) }}" method="post">
+                                    <button class="desativar" type="submit">
+                                        Desativar
+                                    </button>
+                                </form>
+                                {% else %}
+                                <form action="{{ url_for('alterar_status_categoria' , id=categoria[0]) }}" method="post">
+                                    <button class="desativar" type="submit">
+                                        Ativar
+                                    </button>
+                                </form>
+                                {% endif %}
+                            </div>
+                            {% else %}
+                            <span class="categoria-padrao">Categoria padrão</span>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="sem-categorias">Nenhuma categoria cadastrada.</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

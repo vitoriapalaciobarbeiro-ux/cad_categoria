@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalhos diários</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/trabalho_diario.css') }}">
+</head>
+<body>
+  <div class="header">
+        <img class="logo_branca" src="{{ url_for('static', filename='img/logo_branca.png') }}" alt="">
+
+        <div class="inicio_relatorio_previsao">
+            <a href="{{ url_for('dashboard') }}">Início</a>
+            <a href="#">Relatório</a>
+            <a href="#">Previsão</a>
+        </div>
+
+        <div class="icone_e_nome">
+            <a class="icone_user">
+            <img src="{{ url_for('static', filename=img) }}" alt="Foto do perfil">
+            </a>
+            <a href="{{ url_for('editar_usuario') }}"><p class="nome_user">Olá, {{nome}}</p></a>
+            <a href="{{ url_for('logout') }}" class="logout"><img src="{{ url_for('static', filename='img/logout.png') }}" alt="Símbolo de sair"></a>
+        </div>
+    </div>
+  <main>
+
+      <div class="esquerda">
+          <img src="../static/img/logo.png" alt="Meu Salário">
+      </div>
+
+      <div class="direita">
+          <a href="{{ url_for('historico_trabalho') }}" class="voltar">⟵ Voltar</a>
+           {% with messages = get_flashed_messages(with_categories=true) %}
+               {% if messages %}
+               <div class="flash-messages">
+                   {% for category, message in messages %}
+                   <div class="flash {{ category }}">{{ message }}</div>
+                   {% endfor %}
+               </div>
+               {% endif %}
+          {% endwith %}
+          <div class="formulario">
+
+              <div class="titulo">
+                  <span class="mais">+</span>
+                  <h2>Trabalho diário</h2>
+              </div>
+
+              <p class="descricao-titulo">
+                  Adicione os dados sobre o seu trabalho diariamente.
+              </p>
+              <form action="{{ url_for('adicionar_trabalho') }}" method="post">
+
+                  <div class="linha">
+                      <div class="campo">
+                          <label for="pacotes">Pacotes coletados</label>
+                          <input type="number" name="pacotes" id="pacotes"
+                                 placeholder="Insira os pacotes coletados" required>
+                      </div>
+
+                      <div class="campo">
+                          <label for="trabalhadores">Quantidade de trabalhadores</label>
+                          <input type="number" name="trabalhadores" id="trabalhadores"
+                                 placeholder='Insira a quantidade de trabalhadores'
+                                  required>
+                      </div>
+                  </div>
+
+                  <div class="linha">
+
+                      <div class="campo">
+                          <label for="data">Data</label>
+                          <input type="date" name="data" id="data" required value="{{ data }}" disabled>
+                      </div>
+                      <div class="campo botao">
+                          <button type="submit">Salvar</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+  </main>
+</body>
+</html>

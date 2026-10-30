@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Serviços Extras</title>
+
+    <link rel="stylesheet" href="../static/css/historico_trabalho.css">
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo_branca" src="../static/img/logo_branca.png" alt="Logo">
+
+        <div class="inicio_relatorio_previsao">
+            <a href="{{ url_for('dashboard') }}">Início</a>
+            <p>Relatório</p>
+            <p>Previsão</p>
+        </div>
+
+        <div class="icone_e_nome">
+            <a class="icone_user">
+            <img src="{{ url_for('static', filename=img) }}" alt="Foto de usuário">
+            </a>
+
+            <a href="{{ url_for('editar_usuario') }}">
+                <p class="nome_user">Olá, {{ nome }}</p>
+            </a>
+
+            <a href="{{ url_for('logout') }}" class="logout">
+                <img src="../static/img/logout.png" alt="Símbolo de sair">
+            </a>
+        </div>
+    </div>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="barra_pesquisa">
+            <h3>Filtrar</h3>
+
+            <form action="{{ url_for('historico_servico_extra') }}" method="POST">
+
+                <div class="campo_filtro">
+                    <label for="status">Status</label>
+                    <select name="status" id="status">
+                        <option value="">Todos os status</option>
+                        <option value="0">Ativo</option>
+                        <option value="1">Desativo</option>
+                    </select>
+                </div>
+
+                <div class="campo_filtro">
+                    <label for="data_inicial">Data inicial</label>
+                    <input type="date" name="data_inicial" id="data_inicial">
+                </div>
+
+                <div class="campo_filtro">
+                    <label for="data_final">Data final</label>
+                    <input type="date" name="data_final" id="data_final">
+                </div>
+
+                <button type="submit">
+                    <img src="{{ url_for('static', filename='img/lupa.png') }}" alt="Buscar">
+                </button>
+
+            </form>
+        </div>
+
+
+        <div class="historico">
+            <h3>Histórico de Serviços Extras</h3>
+
+            <table id="tabela">
+                <tr>
+                    <th>Serviço</th>
+                    <th>Data</th>
+                    <th>Total recebido</th>
+                    <th>Ações</th>
+                </tr>
+
+                {% for servico in servicos %}
+                <tr>
+                    <td>{{ servico[3] }}</td>
+
+                    <td>{{ servico[2].strftime('%d/%m/%Y') }}</td>
+
+                    <td>R$ {{ "%.2f"|format(servico[4])|replace(".", ",") }}</td>
+
+                    <td>
+                        {% if servico[2] == data %}
+                        <div class="editar-excluir">
+                            <a class="editar" href="{{ url_for('editar_servico_extra', id=servico[0]) }}">
+                                Editar
+                            </a>
+
+                            <form action="{{ url_for('excluir_servico_extra', id=servico[0]) }}" method="post">
+                                <button class="excluir" type="submit">
+                                    Deletar
+                                </button>
+                            </form>
+                            </div>
+                        {% else %}
+                        {% if servico[5] == 0 %}
+                        <form action="{{ url_for('alterar_status_extra' , id=servico[0]) }}" method="post">
+                            <button class="desativar" type="submit">
+                                Desativar
+                            </button>
+                        </form>
+                        {% else %}
+                        <form action="{{ url_for('alterar_status_extra' , id=servico[0]) }}" method="post">
+                            <button class="ativar" type="submit">
+                                Ativar
+                            </button>
+                        </form>
+                        {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">Nenhum serviço extra cadastrado.</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <a class="novo" href="{{ url_for('servico_extra') }}">
+            + Cadastrar serviço extra
+        </a>
+    </main>
+</body>
+
+</html>

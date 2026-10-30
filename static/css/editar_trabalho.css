@@ -1,0 +1,442 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+:root {
+  --principal: #0D7C4E;
+  --branco: #FFFFFF;
+  --neutro: #1F2937;
+  --neutro_secundario: #6B7280;
+  --fundo_claro: #F7FAF8;
+}
+
+body {
+  color: var(--neutro);
+  background: var(--branco);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* header das paginas internas */
+
+
+.header {
+   width: 100%;
+   height: 70px;
+   background-color: var(--principal);
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+
+.header .logo_branca {
+   width: 95px;
+   height: auto;
+   margin-left: 16px;
+}
+
+
+.inicio_relatorio_previsao {
+   align-items: center;
+   display: flex;
+   flex-direction: row;
+   gap: 120px;
+   color: var(--branco);
+   margin-left: auto;
+}
+
+
+.inicio_relatorio_previsao a,
+.inicio_relatorio_previsao p {
+   color: var(--branco);
+}
+
+
+.header .icone_e_nome {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 8px;
+   margin-left: auto;
+   margin-right: 25px;
+}
+
+
+.header .icone_e_nome .icone_user {
+   background-color: var(--branco);
+   width: 24px;
+   height: 24px;
+   border-radius: 100%;
+}
+
+
+.header .icone_e_nome .nome_user {
+   color: var(--branco);
+   font-weight: 600;
+   font-size: 9px;
+}
+
+
+.header .icone_e_nome a {
+}
+
+
+.logout {
+}
+
+
+.logout img {
+   width: 34px;
+   height: 34px;
+   object-fit: contain;
+   display: block;
+}
+
+main {
+  display: flex;
+  height: calc(100vh - 44px);
+  min-height: 390px;
+}
+
+.esquerda {
+  width: 42%;
+  background-image: url('../img/imagem_esquerda.png');
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.esquerda img {
+  width: 200px;
+}
+
+.direita {
+  width: 58%;
+  background: var(--fundo_claro);
+  padding: 20px;
+}
+
+.voltar {
+  color: var(--principal);
+  font-size: 16px;
+}
+
+.formulario {
+  width: 540px;
+  max-width: 100%;
+  margin-top: 137px;
+  margin-left: 100px;
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+
+
+
+
+
+.mais {
+  width: 22px;
+  height: 22px;
+  background: var(--principal);
+  color: var(--branco);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+h2 {
+  color: var(--principal);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.descricao-titulo {
+  color: var(--neutro_secundario);
+  font-size: 10px;
+  margin-top: 5px;
+  margin-bottom: 18px;
+}
+
+.linha {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.campo {
+  width: 50%;
+  min-width: 0;
+}
+
+label {
+  display: block;
+  color: var(--principal);
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  height: 35px;
+  border: 1px solid #DCE5EF;
+  border-radius: 5px;
+  padding: 0 8px;
+  background: var(--branco);
+  font-size: 10px;
+  color: var(--neutro_secundario);
+}
+
+
+
+
+
+
+
+
+.botao {
+  display: flex;
+  align-items: end;
+}
+
+
+
+
+
+
+
+
+button {
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background: var(--principal);
+  color: var(--branco);
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .formulario {
+      width: 100%;
+      margin: 50px 0;
+  }
+
+
+
+
+
+
+
+
+  .direita {
+      padding: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 425px) {
+  main {
+      display: block;
+      height: auto;
+  }
+
+
+
+
+
+
+
+
+  .esquerda, .direita {
+      width: 100%;
+  }
+
+
+
+
+
+
+
+
+  .esquerda {
+      height: 130px;
+  }
+
+
+
+
+
+
+
+
+  .esquerda img {
+      width: 100px;
+  }
+
+
+
+
+
+
+
+
+  .formulario {
+      margin: 25px 0;
+  }
+
+
+
+
+
+
+
+
+  .header {
+      flex-wrap: wrap;
+      height: auto;
+      padding: 10px;
+  }
+
+
+
+
+
+
+
+
+  .inicio_relatorio_previsao {
+      margin: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 375px) {
+  .linha {
+      gap: 5px;
+  }
+
+
+
+
+
+
+
+
+  .inicio_relatorio_previsao a {
+      font-size: 11px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 325px) {
+  .linha {
+      display: block;
+  }
+
+
+
+
+
+
+
+
+  .campo {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}

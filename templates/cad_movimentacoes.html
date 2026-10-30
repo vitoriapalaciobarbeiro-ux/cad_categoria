@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Receita ou Despesa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cad_movimentacoes.css') }}">
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo_branca" src="{{ url_for('static', filename='img/logo_branca.png') }}" alt="">
+
+        <div class="inicio_relatorio_previsao">
+            <a href="{{ url_for('dashboard') }}">Início</a>
+            <p>Relatório</p>
+            <p>Previsão</p>
+        </div>
+
+        <div class="icone_e_nome">
+            <a class="icone_user">
+            <img src="{{ url_for('static', filename=img) }}" alt="Foto de usuário">
+            </a>
+            <a href="{{ url_for('editar_usuario') }}"><p class="nome_user">Olá, {{nome}}</p></a>
+            <a href="{{ url_for('logout') }}" class="logout"><img src="{{ url_for('static', filename='img/logout.png') }}" alt="Símbolo de sair"></a>
+        </div>
+    </div>
+    <main>
+        <div class="esquerda">
+            <img src="../static/img/logo.png" alt="Meu Salário">
+        </div>
+        <div class="direita">
+            <a href="{{ url_for('historico_movimentacoes') }}" class="voltar">⟵ Voltar</a>
+            <div class="formulario">
+                <div class="titulo">
+                    <span class="mais">+</span>
+                    <h2>Cadastrar Receita ou Despesa</h2>
+                </div>
+                <p class="descricao-titulo">
+                    Adicione uma nova movimentação financeira para manter seu controle em dia.
+                </p>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class="flash-messages">
+                        {%for category, message in messages %}
+                        <div class="flash {{category}}">{{message}}</div>
+                        {%endfor%}
+                    </div>
+                    {%endif%}
+                {%endwith%}
+                <form action="{{ url_for('cadmovimentacoes') }}" method="post">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="tipo">Tipo</label>
+                            <select name="tipo" id="tipo" required>
+                                <option disabled selected>Selecione um tipo</option>
+                                <option value="0">Receita</option>
+                                <option value="1">Despesa</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="categoria">Categoria</label>
+                            <select name="categoria" id="categoria" required>
+                                <option disabled selected>Selecione um categoria</option>
+                                {% for categoria in categorias %}
+                                    <pre>{{ categoria }}</pre>
+                                    {% if categoria[2] == 0 %}
+                                        <option value="{{ categoria[0] }}">{{ categoria[1] }}</option>
+                                    {%endif%}
+                                {%endfor%}
+                            </select>
+                            <a class="nova" href="{{ url_for('categorias') }}">Nova Categoria</a>
+                        </div>
+                    </div>
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="data">Data</label>
+                            <input type="date" name="data" id="data" required value="{{data}}" disabled>
+                        </div>
+                        <div class="campo">
+                            <label for="descricao">Descrição</label>
+                            <input type="text" name="descricao" id="descricao"
+                                   placeholder="Exemplo" required>
+                        </div>
+                    </div>
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="valor">Valor</label>
+                            <input type="number" name="valor" id="valor"
+                                   placeholder="R$ 0,00" min="0.01"
+                                   step="0.01" required>
+                        </div>
+
+                        <div class="campo botao">
+                            <button type="submit">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

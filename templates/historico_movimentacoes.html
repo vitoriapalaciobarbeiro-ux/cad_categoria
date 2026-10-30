@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico De Movimentações</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/historico_movimentacoes.css') }}">
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo_branca" src="{{ url_for('static', filename='img/logo_branca.png') }}" alt="">
+
+        <div class="inicio_relatorio_previsao">
+            <a href="{{ url_for('dashboard') }}">Início</a>
+            <a href="#">Relatório</a>
+            <a href="#">Previsão</a>
+        </div>
+        <div class="icone_e_nome">
+            <a class="icone_user">
+            <img src="{{ url_for('static', filename=img) }}" alt="Foto de usuário">
+            </a>
+            <a href="{{ url_for('editar_usuario') }}">
+                <p class="nome_user">Olá, {{ nome }}</p>
+            </a>
+            <a href="{{ url_for('logout') }}" class="logout"><img
+                    src="{{ url_for('static', filename='img/logout.png') }}" alt="Símbolo de sair"></a>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-messages">
+        {%for category, message in messages %}
+        <div class="flash {{category}}">{{message}}</div>
+        {%endfor%}
+    </div>
+    {%endif%}
+    {%endwith%}
+
+    <div class="barra_pesquisa">
+        <h3>Filtrar movimentações</h3>
+
+        <form action="{{ url_for('historico_movimentacoes') }}" method="POST">
+
+            <div class="campo_filtro descricao_filtro">
+                <label for="descricao">Descrição</label>
+                <input type="text" name="descricao" placeholder="Pesquisar por descrição" id="descricao">
+            </div>
+
+            <div class="campo_filtro">
+                <label for="tipo">Tipo</label>
+                <select name="tipo" id="tipo">
+                    <option value="">Todos os tipos</option>
+                    <option value="0">Receita</option>
+                    <option value="1">Despesa</option>
+                </select>
+            </div>
+
+            <div class="campo_filtro">
+                <label for="categoria">Categoria</label>
+                <select name="categoria" id="categoria">
+                    <option value="">Todas as categorias</option>
+                    {% for categoria in categorias %}
+                    <pre>{{ categoria }}</pre>
+                    {% if categoria[2] == 0 %}
+                    <option value="{{ categoria[0] }}">{{ categoria[1] }}</option>
+                    {%endif%}
+                    {%endfor%}
+                </select>
+            </div>
+
+            <div class="campo_filtro">
+                <label for="data_inicial">Data inicial</label>
+                <input type="date" name="data_inicial" id="data_inicial">
+            </div>
+
+            <div class="campo_filtro">
+                <label for="data_final">Data final</label>
+                <input type="date" name="data_final" id="data_final">
+            </div>
+
+            <button type="submit">
+                <img src="{{ url_for('static', filename='img/lupa.png') }}" alt="Buscar">
+            </button>
+
+        </form>
+    </div>
+
+    <div class="historico">
+        <h3>Histórico de Movimentações</h3>
+        <table id="tabela">
+
+            <tr>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Categoria</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Ações</th>
+            </tr>
+            {% for movimentacao in movimentacoes %}
+            <tr>
+                <td>{{ movimentacao[0].strftime('%d/%m/%Y') }}</td>
+                <!--Deixa a data no padrão basileiro (dia/mês/ano)-->
+                <td>{{ movimentacao[1] }}</td>
+                <td>{{ movimentacao[2] }}</td>
+                <td>{{ movimentacao[3] }}</td>
+                <td>R$ {{ "%.2f"|format(movimentacao[4])|replace(".", ",") }}</td>
+                <!--Deixa o valor em reais com as casas decimais específicas (2)-->
+
+                <td>
+                    {% if movimentacao[2]|string|trim not in ['1001', '1002', 'Serviço Extra', 'Trabalho Diário'] %}
+                        {% if movimentacao[0] == data %}
+                        <div class="editar-excluir">
+                            <a href="{{ url_for('editar_receita_e_despesa' , id=movimentacao[6]) }}" class="editar">Editar</a>
+                            <form action="{{ url_for('excluir_movimentacao' , id=movimentacao[6]) }}" method="post">
+                                <button class="excluir" type="submit">
+                                    Deletar
+                                </button>
+                            </form>
+                        </div>
+                        {% else %}
+                        {% if movimentacao[5] == 0 %}
+                        <form action="{{ url_for('alterar_status_movimentacao' , id=movimentacao[6]) }}" method="post">
+                            <button class="desativar" type="submit">
+                                Desativar
+                            </button>
+                        </form>
+                        {% else %}
+                        <form action="{{ url_for('alterar_status_movimentacao' , id=movimentacao[6]) }}" method="post">
+                            <button class="ativar" type="submit">
+                                Ativar
+                            </button>
+                        </form>
+                        {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    <a href="{{ url_for('movimentacoes') }}" class="novo">+ Nova Movimentação</a>
+</body>
+
+</html>
